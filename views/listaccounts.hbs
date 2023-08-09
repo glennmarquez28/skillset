@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Accounts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+
+    <div class="text-end p-3 bg-info">
+        <a href="/auth/logout" class="btn btn-primary">Logout</a>    
+    </div>
+
+    <div class="container">
+        {{#if title}}
+        <h1>{{title}}</h1>
+        {{/if}}
+
+        <table class="table table-stripe border mt-5 shadow-lg p-3 mb-5 rounded">
+            <thead>
+                <tr>
+                    <th scope="col">Account ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col" colspan="3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each accounts}}
+                    <tr>
+                        <td>{{this.account_id}}</td>
+                        <td>{{this.first_name}}</td>
+                        <td>{{this.last_name}}</td>
+                        <td>{{this.email}}</td>
+                        <td class=" text-center"><a class="btn btn-light" href="/auth/skillset/{{account_id}}">View Skill</a></td>
+                        <td class=" text-center"><a class="btn btn-warning" href="/auth/updateform/{{email}}">Edit</a></td>
+                        <td class=" text-center"><a class="btn btn-danger" href="/auth/delete/{{account_id}}">Delete</a></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
